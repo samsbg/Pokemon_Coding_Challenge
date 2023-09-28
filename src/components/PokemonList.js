@@ -42,9 +42,9 @@ class PokemonList extends Component {
         style={{ background: '#f5f5f5', borderRadius: '10px', padding: '20px' }}
         grid={{ gutter: 16, column: 4 }}
         dataSource={sortedPokemon}
-        renderItem={(poke, index) => (
+        renderItem={poke => (
           <List.Item>
-            <Link to={`/pokemon/${index+1}`}>
+            <Link to={`/pokemon/${poke.url.split('/')[6]}`}>
               <Card
                 hoverable
                 style={{ borderRadius: '10px', transition: 'all 0.3s ease' }}
