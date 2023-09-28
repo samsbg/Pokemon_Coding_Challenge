@@ -1,50 +1,39 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { fetchData } from '../utils/api';
 import { Card } from 'antd';
 
+function PokemonDetail(props) {
 
-class PokemonDetail extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      pokemon: null,
-    };
+  const { match } = props;
+  const [ pokemon, setPokemon ] = useState(null);
+
+  fetchData(`/pokemon/${match.params.id}`)
+    .then(data => setPokemon(data))
+    .catch(error => console.error(error));
+
+  if (!pokemon) {
+    return <div>Loading...</div>;
   }
 
-  componentDidMount() {
-    const { match } = this.props;
-    fetchData(`/pokemon/${match.params.id}`)
-      .then(data => this.setState({ pokemon: data }))
-      .catch(error => console.error(error));
-  }
-
-  render() {
-    const { pokemon } = this.state;
-
-    if (!pokemon) {
-      return <div>Loading...</div>;
-    }
-
-    return (
-      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
-        <Card 
-          style={{ width: 300 }}
-          cover={<img alt={pokemon.name} src={pokemon.sprites?.front_default} />}
-        >
-          <Card.Meta 
-            title={pokemon.name} 
-            description={
-              <>
-                <p>Height: {pokemon.height}</p>
-                <p>Weight: {pokemon.weight}</p>
-                <p>Type: {pokemon.types.map(type => type.type.name).join(', ')}</p>
-              </>
-            }
-          />
-        </Card>
-      </div>
+  return (
+    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+      <Card 
+        style={{ width: 300 }}
+        cover={<img alt={pokemon.name} src={pokemon.sprites?.front_default} />}
+      >
+        <Card.Meta 
+          title={pokemon.name} 
+          description={
+            <>
+              <p>Height: {pokemon.height}</p>
+              <p>Weight: {pokemon.weight}</p>
+              <p>Type: {pokemon.types.map(type => type.type.name).join(', ')}</p>
+            </>
+          }
+        />
+      </Card>
+    </div>
     );
-  }
 }
 
 export default PokemonDetail;
