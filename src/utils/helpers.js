@@ -1,9 +1,17 @@
 export function sortData(data, sort) {
-  // TODO: Implement the sorting logic
+  switch (sort) {
+    case "name":
+      data.sort((a, b) => (a.name).localeCompare(b.name));
+      break;
+    case "-name":
+      data.sort((a, b) => (b.name).localeCompare(a.name));
+      break;
+    default:
+  }
+  
   return data;
 }
 
 export function filterData(data, filter) {
-  // TODO: Implement the filtering logic
-  return data;
+  return data.filter(str => str.name.includes(filter));
 }
