@@ -44,7 +44,7 @@ class PokemonList extends Component {
         dataSource={sortedPokemon}
         renderItem={poke => (
           <List.Item>
-            <Link to={`/pokemon/id`}>
+            <Link to={`/pokemon/${poke.url.split('/')[6]}`}>
               <Card
                 hoverable
                 style={{ borderRadius: '10px', transition: 'all 0.3s ease' }}
