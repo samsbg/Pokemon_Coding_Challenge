@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { fetchData } from '../utils/api';
 import { sortData, filterData } from '../utils/helpers';
 import Filter from './Filter';
@@ -10,10 +10,12 @@ function PokemonList() {
   const [filter, setFilter] = useState('');
   const [sort, setSort] = useState('name');
 
-  fetchData('/pokemon')
-    .then(data => {setPokemon(data.results)})
-    .catch(error => console.error(error));
-  
+  useEffect(() => {
+    fetchData('/pokemon')
+      .then(data => {setPokemon(data.results)})
+      .catch(error => console.error(error));
+  }, []);
+
   const filteredPokemon = filterData(pokemon, filter);
   const sortedPokemon = sortData(filteredPokemon, sort);
 
