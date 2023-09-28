@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { fetchData } from '../utils/api';
 import { Card } from 'antd';
 
@@ -7,9 +7,11 @@ function PokemonDetail(props) {
   const { match } = props;
   const [ pokemon, setPokemon ] = useState(null);
 
-  fetchData(`/pokemon/${match.params.id}`)
-    .then(data => setPokemon(data))
-    .catch(error => console.error(error));
+  useEffect(() => {
+    fetchData(`/pokemon/${match.params.id}`)
+      .then(data => setPokemon(data))
+      .catch(error => console.error(error));
+  }, [match.params.id]);
 
   if (!pokemon) {
     return <div>Loading...</div>;
