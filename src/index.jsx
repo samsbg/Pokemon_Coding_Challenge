@@ -11,7 +11,7 @@ import esES from "antd/lib/locale/es_ES";
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 
-      <Router basename="/">
+      <Router basename="/Pokemon_Coding_Challenge/">
         <ConfigProvider
           locale={esES}
         >
