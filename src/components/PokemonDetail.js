@@ -1,18 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import { fetchData } from '../utils/api';
 import { Card } from 'antd';
+import ErrorPage from './ErrorPage';
 import './PokemonDetail.css';
 
 function PokemonDetail(props) {
 
   const { match } = props;
   const [ pokemon, setPokemon ] = useState(null);
+  const [ error, setError ] = useState(false);
 
   useEffect(() => {
     fetchData(`/pokemon/${match.params.id}`)
       .then(data => setPokemon(data))
-      .catch(error => console.error(error));
+      .catch(error => {
+        console.error(error);
+        setError(true)
+      });
   }, [match.params.id]);
+
+  if (error) {
+    return ErrorPage();
+  }
 
   if (!pokemon) {
     return <div>Loading...</div>;

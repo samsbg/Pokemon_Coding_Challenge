@@ -2,19 +2,34 @@ import React, { useState, useEffect } from 'react';
 import { fetchData } from '../utils/api';
 import { sortData, filterData } from '../utils/helpers';
 import Filter from './Filter';
-import { List, Card } from 'antd';
+import { List, Card, Pagination } from 'antd';
 import { Link } from 'react-router-dom';
+import ErrorPage from './ErrorPage';
 
 function PokemonList() {
   const [pokemon, setPokemon] = useState([]);
+  const [count, setCount] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [pageSize, setPageSize] = useState(20);
   const [filter, setFilter] = useState('');
   const [sort, setSort] = useState('name');
+  const [error, setError] = useState(false);
 
   useEffect(() => {
-    fetchData('/pokemon')
-      .then(data => {setPokemon(data.results)})
-      .catch(error => console.error(error));
-  }, []);
+    fetchData(`/pokemon?offset=${(currentPage-1)*pageSize}&limit=${pageSize}`)
+      .then(data => {
+        setPokemon(data.results);
+        setCount(data.count);
+      })
+      .catch(error => {
+        console.error(error);
+        setError(true);
+      });
+  }, [currentPage, pageSize]);
+
+  if (error) {
+    return ErrorPage();
+  }
 
   const filteredPokemon = filterData(pokemon, filter);
   const sortedPokemon = sortData(filteredPokemon, sort);
@@ -40,6 +55,25 @@ function PokemonList() {
             </Link>
           </List.Item>
         )}
+      />
+      <div>
+        
+      </div>
+      <Pagination 
+        style={{display: "flex", justifyContent: "center"}}
+        total={count} 
+        showTotal={(total, range) => `${range[0]}-${range[1]} of ${total} items`}
+        defaultPageSize={pageSize}
+        current={currentPage}
+        
+        onChange={(newCurrent, newPageSize) => {
+          const pageSizeChange = pageSize !== newPageSize;
+          if (pageSizeChange) {
+            setPageSize(newPageSize);
+          } else {
+            setCurrentPage(newCurrent);
+          }
+        }}
       />
     </div>
   );

@@ -6,7 +6,7 @@ const { Option } = Select;
 function Filter({ onFilterChange, onSortChange }) {
   return (
     <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '20px' }}>
-      <Input 
+      <Input.Search 
         placeholder="Filter Pokémon by name" 
         onChange={(e) => onFilterChange(e.target.value)}
         style={{ width: '60%' }}
