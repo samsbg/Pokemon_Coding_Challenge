@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/pokemon_coding_challenge/static/css/main.f2c03364.css",
+    "main.js": "/pokemon_coding_challenge/static/js/main.16d4fced.js",
+    "static/js/787.3e4b36fc.chunk.js": "/pokemon_coding_challenge/static/js/787.3e4b36fc.chunk.js",
+    "index.html": "/pokemon_coding_challenge/index.html",
+    "main.f2c03364.css.map": "/pokemon_coding_challenge/static/css/main.f2c03364.css.map",
+    "main.16d4fced.js.map": "/pokemon_coding_challenge/static/js/main.16d4fced.js.map",
+    "787.3e4b36fc.chunk.js.map": "/pokemon_coding_challenge/static/js/787.3e4b36fc.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f2c03364.css",
+    "static/js/main.16d4fced.js"
+  ]
+}
