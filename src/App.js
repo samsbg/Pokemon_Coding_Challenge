@@ -33,7 +33,7 @@ function App() {
         <Content style={{ padding: '20px', maxWidth: '1200px', margin: '0 auto' }}>
           <Switch>
             <Route exact path="/Pokemon_Coding_Challenge/" component={PokemonList} />
-            <Route path="/pokemon/:id" component={PokemonDetail} />
+            <Route path="/Pokemon_Coding_Challenge/pokemon/:id" component={PokemonDetail} />
           </Switch>
         </Content>
         <Footer style={{ textAlign: 'center' }}>PokéApp ©2023 Created by ABDOTECH</Footer>

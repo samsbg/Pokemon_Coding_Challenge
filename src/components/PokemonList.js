@@ -43,7 +43,7 @@ function PokemonList() {
         dataSource={sortedPokemon}
         renderItem={poke => (
           <List.Item>
-            <Link to={`/pokemon/${poke.url.split('/')[6]}`}>
+            <Link to={`/Pokemon_Coding_Challenge/pokemon/${poke.url.split('/')[6]}`}>
               <Card
                 hoverable
                 style={{ borderRadius: '10px', transition: 'all 0.3s ease' }}
