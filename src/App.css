@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Black+Ops+One');
+
 .App {
   text-align: center;
 }
@@ -14,7 +16,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #2E6DB5;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -28,6 +30,12 @@
   color: #61dafb;
 }
 
+.App-title {
+  color: #FFCB05 !important;
+  font-family: 'Black Ops One';
+  font-weight: 100;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -37,8 +45,13 @@
   }
 }
 
+.header{
+  background: #2E6DB5; 
+  padding: 0;
+}
+
 .custom-header-menu .ant-menu-item-selected {
-  background-color: #00aaff !important; /* Header's background color */
+  background-color: #2E6DB5 !important; /* Header's background color */
 }
 
 .custom-header-menu .ant-menu-item-selected a {

@@ -12,9 +12,11 @@ function App() {
   return (
     <Router>
       <Layout style={{ minHeight: '100vh' }}>
-        <Header style={{ background: '#00aaff', padding: 0 }}>
+        <Header className='header'>
           <div style={{ display: 'flex', alignItems: 'center', maxWidth: '1200px', margin: '0 auto', padding: '0 20px' }}>
-            <Title style={{ color: '#fff', margin: 0 }} level={2}><Link to="/" style={{ color: 'inherit', textDecoration: 'none' }}>PokéApp</Link></Title>
+            <Title style={{ color: '#FFCB05', margin: 0 }} level={2}>
+              <Link to="/" className='App-title'>PokéApp</Link>
+            </Title>
             <Menu 
               className="custom-header-menu"
               theme="dark" 
